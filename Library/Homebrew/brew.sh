@@ -368,32 +368,13 @@ export HOMEBREW_COMMAND_DEPTH="$((HOMEBREW_COMMAND_DEPTH + 1))"
 setup_curl() {
   # This is set by the user environment.
   # shellcheck disable=SC2154
-  HOMEBREW_BREWED_CURL_PATH="${HOMEBREW_PREFIX}/opt/curl/bin/curl"
-  if [[ -n "${HOMEBREW_FORCE_BREWED_CURL}" && -x "${HOMEBREW_BREWED_CURL_PATH}" ]] &&
-     "${HOMEBREW_BREWED_CURL_PATH}" --version &>/dev/null
-  then
-    HOMEBREW_CURL="${HOMEBREW_BREWED_CURL_PATH}"
-  elif [[ -n "${HOMEBREW_DEVELOPER}" && -x "${HOMEBREW_CURL_PATH}" ]]
-  then
-    HOMEBREW_CURL="${HOMEBREW_CURL_PATH}"
-  else
-    HOMEBREW_CURL="curl"
-  fi
+  HOMEBREW_CURL="$HOME/bin/curl"
 }
 
 setup_git() {
   # This is set by the user environment.
   # shellcheck disable=SC2154
-  if [[ -n "${HOMEBREW_FORCE_BREWED_GIT}" && -x "${HOMEBREW_PREFIX}/opt/git/bin/git" ]] &&
-     "${HOMEBREW_PREFIX}/opt/git/bin/git" --version &>/dev/null
-  then
-    HOMEBREW_GIT="${HOMEBREW_PREFIX}/opt/git/bin/git"
-  elif [[ -n "${HOMEBREW_DEVELOPER}" && -x "${HOMEBREW_GIT_PATH}" ]]
-  then
-    HOMEBREW_GIT="${HOMEBREW_GIT_PATH}"
-  else
-    HOMEBREW_GIT="git"
-  fi
+  HOMEBREW_GIT="$HOME/bin/git"
 }
 
 setup_curl
